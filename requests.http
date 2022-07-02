@@ -1,0 +1,27 @@
+### Perfumes Create
+POST http://localhost:3000/perfumes.json
+Content-Type: application/json
+
+{
+"image": "test image",
+"brand": "test brand",
+"name": "Test name",
+"price": 10000
+}
+
+### Perfumes Show
+GET http://localhost:3000/perfumes/1.json
+
+### Perfumes Update
+PATCH http://localhost:3000/perfumes/1.json
+Content-Type: application/json
+
+{
+"image": "update image",
+"brand": "update brand",
+"name": "update name",
+"price": 100000
+}
+
+### Perfumes Destroy
+DELETE http://localhost:3000/perfumes/1.json
