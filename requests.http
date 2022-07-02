@@ -25,3 +25,8 @@ Content-Type: application/json
 
 ### Perfumes Destroy
 DELETE http://localhost:3000/perfumes/1.json
+
+
+
+### Collections Index
+GET http://localhost:3000/collections
