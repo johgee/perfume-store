@@ -30,3 +30,6 @@ Content-Type: application/json
 
 ### Collections Index
 GET http://localhost:3000/collections
+
+### CSV export 
+GET http://localhost:3000/export/perfumes.csv 
