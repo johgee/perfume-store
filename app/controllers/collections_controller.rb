@@ -15,15 +15,22 @@ class CollectionsController < ApplicationController
       name: params[:name],
       description: params[:description]
     )
-    collection.save
-    render json: collection
+    if collection.save
+      render json: collection
+    else
+      render json: {error_message: collection.errors.full_messages}, status: 422
+    end
   end
 
   def update
     collection = Collection.find(params[:id])
     collection.name = params[:name] || collection.name
     collection.description = params[:description] || collection.description
-    render json: collection
+    if collection.save
+      render json: collection
+    else
+      render json: {error_message: collection.errors.full_messages}, status: 422
+    end
   end
 
   def destroy
