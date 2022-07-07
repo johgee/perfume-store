@@ -30,3 +30,26 @@ Content-Type: application/json
 
 ### Collections Index
 GET http://localhost:3000/collections
+
+### Collections Show
+GET http://localhost:3000/collections/1
+
+### Collections Create
+POST http://localhost:3000/collections
+Content-Type: application/json
+
+{
+  "name": "Nirvana Collection",
+  "description": "Smells Like Teen Spirit"
+}
+
+### Collections Update
+PATCH http://localhost:3000/collections/4
+Content-Type: application/json
+
+{
+  "name": "Kurt Cobain Collection"
+}
+
+### Collections Delete
+DELETE http://localhost:3000/collections/4
