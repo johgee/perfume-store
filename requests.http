@@ -27,3 +27,6 @@ Content-Type: application/json
 {
   "delete_comment": "test delete comment"
 }
+
+### Collections Index
+GET http://localhost:3000/collections
