@@ -21,15 +21,12 @@ Content-Type: application/json
 }
 
 ### Perfumes Destroy
-DELETE http://localhost:3000/perfumes/1.json
-
-
-
-### Collections Index
-GET http://localhost:3000/collections
 POST http://localhost:3000/delete-perfumes/1.json
 Content-Type: application/json 
 
 {
   "delete_comment": "test delete comment"
 }
+
+### Collections Index
+GET http://localhost:3000/collections
