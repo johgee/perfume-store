@@ -1,4 +1,19 @@
+require "csv"
+
 class PerfumesController < ApplicationController
+  def export
+    @perfumes = Perfumes.all
+
+    respond_to do |format|
+      format.csv do
+        response.headers["Content-Type"] = "text/csv"
+        response.headers["Content-Disposition"] = "attachment; filename=perfumes.csv"
+
+        render template: "path/to/index.csv.erb"
+      end
+    end
+  end
+
   def index
     perfumes = Perfume.all
     render json: perfumes.as_json
