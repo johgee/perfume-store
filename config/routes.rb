@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get "/perfumes/:id" => "perfumes#show"
   patch "/perfumes/:id" => "perfumes#update"
   post "/delete-perfumes/:id" => "perfumes#destroy"
+
+  # csv
+
 end
