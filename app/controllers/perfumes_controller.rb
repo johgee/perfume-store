@@ -1,4 +1,12 @@
 class PerfumesController < ApplicationController
+  def export
+    @perfumes = Perfume.all
+
+    respond_to do |format|
+      format.csv { send_data @perfumes.to_csv, filename: "perfumes-#{Date.today}.csv" }
+    end
+  end
+
   def index
     perfumes = Perfume.all
     render json: perfumes.as_json
