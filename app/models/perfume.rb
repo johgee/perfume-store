@@ -1,3 +1,5 @@
+require "csv"
+
 class Perfume < ApplicationRecord
   acts_as_paranoid
 
@@ -7,8 +9,8 @@ class Perfume < ApplicationRecord
     CSV.generate(headers: true) do |csv|
       csv << attributes
 
-      all.find_each do perfume |
-        csv << attributes.map { |attr| user.send(attr) }       
+      all.find_each do |perfume|
+        csv << attributes.map { |attr| perfume.send(attr) }
       end
     end
   end

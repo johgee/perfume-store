@@ -1,16 +1,9 @@
-require "csv"
-
 class PerfumesController < ApplicationController
   def export
-    @perfumes = Perfumes.all
+    @perfumes = Perfume.all
 
     respond_to do |format|
-      format.csv do
-        response.headers["Content-Type"] = "text/csv"
-        response.headers["Content-Disposition"] = "attachment; filename=perfumes.csv"
-
-        render template: "path/to/index.csv.erb"
-      end
+      format.csv { send_data @perfumes.to_csv, filename: "perfumes-#{Date.today}.csv" }
     end
   end
 
@@ -36,12 +29,16 @@ class PerfumesController < ApplicationController
   end
 
   def update
-    perfume = Perfume.with_deleted_by(id: params[:id])
+    # response = Cloudinary::Uploader.upload(params[:image_file], resource_type: :auto)
+    # cloudinary_url = response["secure_url"]
+
+    perfume = Perfume.with_deleted.find_by(id: params[:id])
     perfume.image = params[:image] || perfume.image
+    # perfume.image = cloudinary_url || user.image_url
     perfume.brand = params[:brand] || perfume.brand
     perfume.name = params[:name] || perfume.name
     perfume.price = params[:price] || perfume.price
-    item.deleted_at = params[:deleted_at] || perfume.deleted_at
+    perfume.deleted_at = params[:deleted_at] || perfume.deleted_at
     perfume.save
     render json: perfume.as_json
   end

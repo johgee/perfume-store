@@ -1,3 +1,6 @@
+### perfumes index
+GET http://localhost:3000/perfumes
+
 ### Perfumes Create
 POST http://localhost:3000/perfumes.json
 Content-Type: application/json
@@ -32,4 +35,4 @@ Content-Type: application/json
 GET http://localhost:3000/collections
 
 ### CSV export 
-GET http://localhost:3000/perfumes/export
+GET http://localhost:3000/perfumes-export
