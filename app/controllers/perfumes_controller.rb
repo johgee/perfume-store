@@ -1,6 +1,6 @@
 class PerfumesController < ApplicationController
   def export
-    @perfumes = Perfume.all
+    @perfumes = Perfume.all # using the perfume model
 
     respond_to do |format|
       format.csv { send_data @perfumes.to_csv, filename: "perfumes-#{Date.today}.csv" }
@@ -13,6 +13,9 @@ class PerfumesController < ApplicationController
   end
 
   def create
+    # response = Cloudinary::Uploader.upload(params[:image_file], resource_type: :auto)
+    # cloudinary_url = response["secure_url"]
+
     perfume = Perfume.new(
       image: params[:image],
       brand: params[:brand],
@@ -29,12 +32,12 @@ class PerfumesController < ApplicationController
   end
 
   def update
-    # response = Cloudinary::Uploader.upload(params[:image_file], resource_type: :auto)
-    # cloudinary_url = response["secure_url"]
+    response = Cloudinary::Uploader.upload(params[:image_file], resource_type: :auto)
+    cloudinary_url = response["secure_url"]
 
     perfume = Perfume.with_deleted.find_by(id: params[:id])
-    perfume.image = params[:image] || perfume.image
-    # perfume.image = cloudinary_url || user.image_url
+    # perfume.image = params[:image] || perfume.image
+    perfume.image = cloudinary_url || perfume.image
     perfume.brand = params[:brand] || perfume.brand
     perfume.name = params[:name] || perfume.name
     perfume.price = params[:price] || perfume.price
