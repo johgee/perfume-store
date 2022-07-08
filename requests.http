@@ -32,4 +32,4 @@ Content-Type: application/json
 GET http://localhost:3000/collections
 
 ### CSV export 
-GET http://localhost:3000/export/perfumes.csv 
+GET http://localhost:3000/perfumes/export

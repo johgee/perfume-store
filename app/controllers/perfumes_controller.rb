@@ -2,7 +2,7 @@ require "csv"
 
 class PerfumesController < ApplicationController
   def export
-    @perfumes = Perfumes.where(organization_id: current_perfume.organization_id)
+    @perfumes = Perfumes.all
 
     respond_to do |format|
       format.csv do

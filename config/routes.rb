@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   post "/delete-perfumes/:id" => "perfumes#destroy"
 
   # csv
-  get "perfumes/export", to: "perfumes#export"
+  get "/perfumes/export" => "perfumes#export"
 end
